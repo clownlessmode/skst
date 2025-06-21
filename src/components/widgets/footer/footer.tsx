@@ -38,39 +38,47 @@ export const Footer = () => {
                 <FooterText text="Главная" className={getActiveClass("/")} />
                 <FooterText
                   text="О СКСТ"
+                  href="/about"
                   className={getActiveClass("/about")}
                 />
                 <FooterText
                   text="Специальности"
+                  href="/specialties"
                   className={getActiveClass("/specialties")}
                 />
                 <FooterText
                   text="Новости"
+                  href="/news"
                   className={getActiveClass("/news")}
                 />
                 <FooterText
                   text="Абитуриентам"
+                  href="/applicants"
                   className={getActiveClass("/applicants")}
                 />
                 <FooterText
                   text="Полезные ссылки"
+                  href="/links"
                   className={getActiveClass("/links")}
                 />
               </div>
               <div className="flex flex-col gap-4 ">
                 <FooterText
                   text="Студентам"
+                  href="/students"
                   className={getActiveClass("/students")}
                 />
                 <FooterText text="УПК" className={getActiveClass("/upk")} />
                 <FooterText
                   text="«Центр содействия трудоустройству выпускников (ЦСТВ)»"
+                  href="/career-center"
                   className={`max-w-[200px] ${getActiveClass(
                     "/career-center"
                   )}`}
                 />
                 <FooterText
                   text="Преподавателям"
+                  href="/teachers"
                   className={getActiveClass("/teachers")}
                 />
               </div>

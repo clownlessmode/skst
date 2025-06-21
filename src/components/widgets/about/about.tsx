@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export const About = () => {
   return (
@@ -45,9 +46,11 @@ export const About = () => {
           зал на ул. Тухачевского.
         </p>
         <motion.div>
-          <Button variant="outline" className="w-full md:w-fit uppercase">
-            Подробнее
-          </Button>
+          <Link href="/about">
+            <Button variant="outline" className="w-full md:w-fit uppercase">
+              Подробнее
+            </Button>
+          </Link>
         </motion.div>
       </motion.div>
     </motion.section>

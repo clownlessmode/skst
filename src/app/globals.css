@@ -61,3 +61,18 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans);
 }
+
+/* Переопределение стилей react-fast-marquee для выравнивания к низу только для about marquee */
+.about-marquee-bottom-align.rfm-marquee {
+  align-items: flex-end !important;
+}
+
+.about-marquee-bottom-align .rfm-marquee-container {
+  align-items: flex-end !important;
+}
+
+.about-marquee-bottom-align .rfm-initial-child-container,
+.about-marquee-bottom-align .rfm-child {
+  align-items: flex-end !important;
+  align-self: flex-end !important;
+}

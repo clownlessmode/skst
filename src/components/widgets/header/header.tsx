@@ -231,8 +231,15 @@ export const Header = () => {
                     variants={mobileItemVariants}
                   >
                     <div className="flex flex-col space-y-4">
-                      <BlindMode />
-                      <Button className="w-full">Связаться с нами</Button>
+                      <div onClick={() => setIsMobileMenuOpen(false)}>
+                        <BlindMode />
+                      </div>
+                      <Button
+                        className="w-full"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Связаться с нами
+                      </Button>
                     </div>
                   </motion.div>
                 </div>
