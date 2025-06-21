@@ -16,7 +16,6 @@ interface NewsItemProps {
 }
 
 export const NewsItem = ({
-  id,
   href = "/news",
   imageSrc = "/news/1.png",
   title = "Форум предприятий легкой промышленности",
