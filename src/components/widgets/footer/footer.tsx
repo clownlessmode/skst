@@ -14,9 +14,9 @@ export const Footer = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 ">
-      <div className="flex flex-row justify-between">
-        <div className="flex flex-row gap-[64px]">
+    <div className="flex flex-col gap-8 px-4 md:px-0">
+      <div className="flex flex-col md:flex-row md:justify-between gap-8">
+        <div className="flex flex-col md:flex-row md:gap-[64px] gap-8">
           <div className="flex flex-col gap-4">
             <Logotype />
             <div className="flex flex-col gap-3 max-w-[264px]">
@@ -33,7 +33,7 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-[24px]">
             <FooterHeading title="НАВИГАЦИЯ" />
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-col md:flex-row gap-4">
               <div className="flex flex-col gap-4 ">
                 <FooterText text="Главная" className={getActiveClass("/")} />
                 <FooterText
@@ -78,7 +78,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <FooterHeading title="НАВИГАЦИЯ" />
+          <FooterHeading title="ДОКУМЕНТЫ" />
           <div className="flex flex-col gap-4 ">
             <FooterText
               href="/license"

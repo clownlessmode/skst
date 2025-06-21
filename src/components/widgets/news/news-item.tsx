@@ -34,15 +34,15 @@ export const NewsItem = ({
     >
       <Link
         href={href}
-        className={`w-full flex flex-row overflow-hidden rounded-[30px] shadow-md bg-white hover:shadow-lg transition-shadow duration-300 ${className}`}
+        className={`w-full flex flex-col md:flex-row overflow-hidden rounded-[30px] shadow-md bg-white hover:shadow-lg transition-shadow duration-300 ${className}`}
       >
         <div
-          className="min-h-[300px] w-[500px] h-full flex-shrink-0 bg-cover bg-center"
+          className="min-h-[300px] w-full md:w-[500px] h-full flex-shrink-0 bg-cover bg-center"
           style={{ backgroundImage: `url("${imageSrc}")` }}
         />
 
         <motion.div
-          className="px-[64px] py-5 flex flex-col gap-6"
+          className="px-4 md:px-[64px] py-5 flex flex-col gap-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -54,7 +54,7 @@ export const NewsItem = ({
 
           <div className="w-full h-px bg-[#69697B] opacity-10" />
 
-          <div className="flex flex-row gap-6 flex-wrap">
+          <div className="flex flex-col md:flex-row gap-6 flex-wrap">
             <div className="flex flex-col gap-3">
               <div className="flex flex-row gap-3 items-center">
                 <Calendar className="text-[#235095] size-5" />

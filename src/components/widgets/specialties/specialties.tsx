@@ -136,19 +136,18 @@ export const Specialties = () => {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="flex flex-col gap-8"
+      className="flex flex-col gap-8 px-4 md:px-0"
     >
       <motion.div className="flex flex-col gap-6" variants={itemVariants}>
         <div className="w-full justify-between items-center flex">
           <h2 className="text-4xl font-medium">Чему мы обучаем?</h2>
-          <Button variant="outline" className="uppercase">
+          <Button variant="outline" className="uppercase hidden md:flex">
             ВСЕ СПЕЦИАЛЬНОСТИ
           </Button>
         </div>
-        <p className="text-[#69697B] text-lg">
-          Специализируемся на подготовке кадров для
-          <br />
-          творческих профессий и индустрии красоты.
+        <p className="text-[#69697B] text-lg max-w-[500px]">
+          Специализируемся на подготовке кадров для творческих профессий и
+          индустрии красоты.
         </p>
       </motion.div>
 

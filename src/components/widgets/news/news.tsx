@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 
 export const News = () => {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 px-4 md:px-0">
       <div className="w-full justify-between items-center flex">
         <h2 className="text-4xl font-medium">Последние новости</h2>
-        <Button variant="outline" className="uppercase">
+        <Button variant="outline" className="uppercase hidden md:flex">
           Узнать больше
         </Button>
       </div>

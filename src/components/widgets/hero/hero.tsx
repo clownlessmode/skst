@@ -36,15 +36,15 @@ export const Hero = () => {
       variants={container}
       initial="hidden"
       animate="show"
-      className="flex flex-row gap-18 items-center w-full justify-center"
+      className="flex flex-row gap-18 items-center w-full justify-center px-4 md:px-0 mt-[32px] md:mt-0"
     >
       <div className="flex flex-col gap-8">
         <motion.div variants={item} className="flex flex-col">
-          <h1 className="font-bold text-[90px] leading-[88.9px]">
+          <h1 className="font-bold text-[48px] leading-none md:text-[90px] md:leading-[88.9px]">
             Образование
           </h1>
           <motion.h1
-            className="font-bold text-[90px] text-[#235095] leading-[88.9px]"
+            className="font-bold text-[48px] leading-none md:text-[90px] md:leading-[88.9px] text-[#235095] "
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -64,16 +64,19 @@ export const Hero = () => {
 
         <motion.div
           variants={item}
-          className="flex flex-row gap-5 items-center uppercase"
+          className="flex flex-col md:flex-row gap-5 items-center uppercase"
         >
-          <Button className="uppercase">Приемная комиссия</Button>
-          <Button className="uppercase" variant="outline">
+          <Button className="uppercase w-full md:w-auto">
+            Приемная комиссия
+          </Button>
+          <Button className="uppercase w-full md:w-auto" variant="outline">
             Узнать подробнее
           </Button>
         </motion.div>
       </div>
 
       <motion.div
+        className="hidden md:block"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.7 }}

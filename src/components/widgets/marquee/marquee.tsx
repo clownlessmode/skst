@@ -46,7 +46,7 @@ const itemVariants = {
 export const Marquee = () => {
   return (
     <motion.section
-      className="flex flex-col items-center gap-8 relative w-full overflow-hidden"
+      className="flex flex-col items-center gap-8 relative w-full overflow-hidden mt-[32px] md:mt-0"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
