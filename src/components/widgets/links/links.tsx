@@ -5,27 +5,27 @@ import { TextLinksItem } from "./text-link-item";
 const TextLinks = [
   {
     title: "ФГОС",
-    link: "https://www.google.com",
+    link: "https://fgos.ru/",
   },
   {
     title: "Министерство образования Кузбасса",
-    link: "https://www.google.com",
+    link: "http://образование42.рф/",
   },
   {
     title: "КРИРПО",
-    link: "https://www.google.com",
+    link: "https://krirpo.ru/",
   },
   {
     title: "Комитет по управлению гос. имуществом Кузбасса",
-    link: "https://www.google.com",
+    link: "https://kugi.kemobl.ru/",
   },
   {
     title: "Министерство науки и высшего образования РФ",
-    link: "https://www.google.com",
+    link: "https://minobrnauki.gov.ru/",
   },
   {
     title: "Министерство просвещения России",
-    link: "https://www.google.com",
+    link: "https://edu.gov.ru/",
   },
 ];
 
@@ -34,13 +34,13 @@ export const Links = () => {
     <div className="flex flex-col gap-8 px-4 md:px-0">
       <h2 className="text-4xl font-medium">Полезные ссылки</h2>
       <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
-        <LinksItems index={1} />
-        <LinksItems index={2} />
+        <LinksItems index={1} title="Абитуриентам" />
+        <LinksItems index={2} title="Студентам" />
       </div>
       <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
-        <LinksItems index={3} />
-        <LinksItems index={4} />
-        <LinksItems index={5} />
+        <LinksItems index={3} title="Колледж СКСТ" />
+        <LinksItems index={4} title="Выпускникам" />
+        <LinksItems index={5} title="Преподавателям" />
       </div>
       <div className="grid md:grid-cols-3 grid-cols-1 gap-[10px] p-[10px]">
         {TextLinks.map((link) => (

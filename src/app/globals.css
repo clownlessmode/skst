@@ -76,3 +76,24 @@ body {
   align-items: flex-end !important;
   align-self: flex-end !important;
 }
+
+/* Простое центрирование всех элементов в grid */
+.center-last-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .center-last-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .center-last-row {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+}

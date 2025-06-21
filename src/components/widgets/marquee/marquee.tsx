@@ -56,7 +56,12 @@ export const Marquee = () => {
       </motion.p>
 
       <motion.div variants={itemVariants} className="w-full">
-        <MarqueeComponent speed={40} gradient={true} pauseOnHover>
+        <MarqueeComponent
+          speed={40}
+          gradient={true}
+          gradientWidth={20}
+          pauseOnHover
+        >
           {MARQUEE_ITEMS.map((item, index) => (
             <MarqueeItem
               key={index}

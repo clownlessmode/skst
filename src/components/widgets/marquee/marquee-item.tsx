@@ -6,7 +6,7 @@ interface Props {
 }
 export const MarqueeItem: FC<Props> = ({ image, title }) => {
   return (
-    <div className="flex flex-row items-center gap-2 ml-[180px]">
+    <div className="flex flex-row items-center gap-2 ml-[50px] md:ml-[180px]">
       <Image
         className="w-auto h-[48px]"
         src={image}

@@ -10,9 +10,9 @@ import { useState } from "react";
 
 // Ссылки для ПК версии (основные)
 const navLinks = [
-  { label: "Сведения об ОО", to: "/info" },
+  { label: "Сведения об ОО", to: "/about" },
   { label: "Студентам", to: "/students" },
-  { label: "Абитуриентам", to: "/applicants" },
+  { label: "Абитуриентам", to: "/about" },
 ];
 
 // Расширенные ссылки для мобильного меню
@@ -21,13 +21,13 @@ const mobileNavLinks = [
   { label: "О СКСТ", to: "/about" },
   { label: "Специальности", to: "/specialties" },
   { label: "Новости", to: "/news" },
-  { label: "Абитуриентам", to: "/applicants" },
+  { label: "Абитуриентам", to: "/about" },
   { label: "Полезные ссылки", to: "/links" },
   { label: "Студентам", to: "/students" },
   { label: "УПК", to: "/upk" },
   { label: "Центр трудоустройства", to: "/career-center" },
   { label: "Преподавателям", to: "/teachers" },
-  { label: "Сведения об ОО", to: "/info" },
+  { label: "Сведения об ОО", to: "/about" },
 ];
 
 // Анимация для контейнера
@@ -125,7 +125,7 @@ export const Header = () => {
           {navLinks.map(({ label, to }) => {
             const isActive = pathname === to;
             return (
-              <motion.div key={to} variants={itemVariants}>
+              <motion.div key={label} variants={itemVariants}>
                 <Link
                   href={to}
                   className={`font-medium text-lg transition-all ${
@@ -210,7 +210,7 @@ export const Header = () => {
                   {mobileNavLinks.map(({ label, to }) => {
                     const isActive = pathname === to;
                     return (
-                      <motion.div key={to} variants={mobileItemVariants}>
+                      <motion.div key={label} variants={mobileItemVariants}>
                         <Link
                           href={to}
                           onClick={() => setIsMobileMenuOpen(false)}

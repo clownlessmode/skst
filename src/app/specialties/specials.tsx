@@ -1,29 +1,27 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import React, { useState, useCallback, memo, useEffect } from "react";
-import { SpecialtiesItem } from "./specialties-item";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+
+import React, { memo } from "react";
+import { SpecialtiesItem } from "@/components/widgets/specialties/specialties-item";
+import { motion } from "framer-motion";
 
 const SPECIALTIES_DATA = [
   {
     id: 1,
-    imageSrc: "/specialties/1.png",
+    imageSrc: "/specialties/111.png",
     title: "Дизайн (по отраслям)",
     description:
       "Готовим дизайнеров для работы в рекламе, веб-дизайне, интерьере и графике. Изучаем композицию, цветоведение и современные компьютерные программы.",
   },
   {
     id: 2,
-    imageSrc: "/specialties/2.png",
+    imageSrc: "/specialties/222.png",
     title: "Реклама",
     description:
       "Обучаем специалистов рекламной сферы для карьеры в брендинговых агентствах, PR-компаниях и онлайн-маркетинге. Осваиваем создание концепций, анализ целевой аудитории и актуальные digital-инструменты продвижения.",
   },
   {
     id: 3,
-    imageSrc: "/specialties/3.png",
+    imageSrc: "/specialties/333.png",
     title: "Технология парикмахерского искусства",
     description:
       "Готовим парикмахеров для работы в салонах красоты, барбершопах и стилистических студиях. Изучаем техники стрижки, окрашивания и современные тренды в парикмахерском искусстве.",
@@ -90,16 +88,6 @@ const SPECIALTIES_DATA = [
 const MemoizedSpecialtiesItem = memo(SpecialtiesItem);
 
 // Animation variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
 
 const itemVariants = {
   hidden: { y: 20, opacity: 0 },
@@ -115,151 +103,26 @@ const itemVariants = {
   },
 };
 
-const slideVariants = {
-  enter: (direction: "left" | "right") => ({
-    x: direction === "right" ? 50 : -50,
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-      duration: 0.3,
-    },
-  },
-  exit: (direction: "left" | "right") => ({
-    x: direction === "right" ? -50 : 50,
-    opacity: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-      duration: 0.2,
-    },
-  }),
-};
-
-export const Specialties = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState<"left" | "right">("right");
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const nextSlide = useCallback(() => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setDirection("right");
-    const step = isMobile ? 1 : 3;
-    setCurrentIndex((prev) =>
-      prev + step >= SPECIALTIES_DATA.length ? 0 : prev + step
-    );
-    setTimeout(() => setIsAnimating(false), 500);
-  }, [isAnimating, isMobile]);
-
-  const prevSlide = useCallback(() => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setDirection("left");
-    const step = isMobile ? 1 : 3;
-    setCurrentIndex((prev) =>
-      prev - step < 0
-        ? Math.max(0, SPECIALTIES_DATA.length - step)
-        : prev - step
-    );
-    setTimeout(() => setIsAnimating(false), 500);
-  }, [isAnimating, isMobile]);
-
-  const getCurrentSlides = useCallback(() => {
-    const count = isMobile ? 1 : 3;
-    return SPECIALTIES_DATA.slice(currentIndex, currentIndex + count);
-  }, [currentIndex, isMobile]);
-
+export const Specials = () => {
   return (
-    <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="flex flex-col gap-8 px-4 md:px-0"
-    >
+    <motion.section className="flex flex-col gap-8 px-4 md:px-0">
       <motion.div className="flex flex-col gap-6" variants={itemVariants}>
         <div className="w-full justify-between items-center flex">
-          <h2 className="text-4xl font-medium">Чему мы обучаем?</h2>
-          <Link href="/specialties">
-            <Button variant="outline" className="uppercase hidden md:flex">
-              ВСЕ СПЕЦИАЛЬНОСТИ
-            </Button>
-          </Link>
+          <h2 className="text-4xl font-medium">Все профессии</h2>
         </div>
-        <p className="text-[#69697B] text-lg max-w-[500px]">
-          Специализируемся на подготовке кадров для творческих профессий и
-          индустрии красоты.
-        </p>
       </motion.div>
 
-      <div className="relative overflow-hidden h-[660px] w-full">
-        <AnimatePresence custom={direction} initial={false}>
-          <motion.div
-            key={currentIndex}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            className="absolute top-0 left-0 right-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            style={{ willChange: "transform" }}
-          >
-            {getCurrentSlides().map((specialty, index) => (
-              <motion.div
-                key={specialty.id}
-                variants={itemVariants}
-                custom={index}
-              >
-                <MemoizedSpecialtiesItem
-                  imageSrc={specialty.imageSrc}
-                  title={specialty.title}
-                  description={specialty.description}
-                />
-              </motion.div>
-            ))}
+      <div className="w-full center-last-row">
+        {SPECIALTIES_DATA.map((specialty, index) => (
+          <motion.div key={specialty.id} variants={itemVariants} custom={index}>
+            <MemoizedSpecialtiesItem
+              imageSrc={specialty.imageSrc}
+              title={specialty.title}
+              description={specialty.description}
+            />
           </motion.div>
-        </AnimatePresence>
+        ))}
       </div>
-
-      <motion.div
-        className="flex flex-row gap-5 items-center justify-center w-full"
-        variants={itemVariants}
-      >
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="cursor-pointer flex justify-center items-center size-9 rounded-full border border-[#ECECF4] bg-[#FAFAFA]"
-          onClick={prevSlide}
-        >
-          <ArrowLeft className="opacity-70 size-7" />
-        </motion.div>
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="cursor-pointer flex justify-center items-center size-9 rounded-full border border-[#ECECF4] bg-[#FAFAFA]"
-          onClick={nextSlide}
-        >
-          <ArrowRight className="opacity-70 size-7" />
-        </motion.div>
-      </motion.div>
     </motion.section>
   );
 };

@@ -42,25 +42,17 @@ export const Hero = () => {
       <div className="flex flex-col gap-8">
         <motion.div variants={item} className="flex flex-col">
           <h1 className="font-bold text-[48px] leading-none md:text-[90px] md:leading-[88.9px]">
-            Образование
+            Профессии
           </h1>
-          <motion.h1
-            className="font-bold text-[48px] leading-none md:text-[90px] md:leading-[88.9px] text-[#235095] "
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            – путь к успеху!
-          </motion.h1>
         </motion.div>
 
         <motion.p
           variants={item}
           className="leading-[30px] text-[#69697B] text-lg max-w-[780px]"
         >
-          В СКСТ студенты получают практические навыки в современных мастерских
-          под руководством опытных преподавателей, что гарантирует их
-          востребованность на рынке труда.
+          В нашем колледже вы освоите творческие и востребованные специальности,
+          которые открывают широкие возможности для самореализации в современном
+          мире.
         </motion.p>
 
         <motion.div
@@ -70,11 +62,6 @@ export const Hero = () => {
           <Link href="tel:+73842280332" className="w-full">
             <Button className="uppercase w-full md:w-auto">
               Приемная комиссия
-            </Button>
-          </Link>
-          <Link href="/about" className="w-full">
-            <Button className="uppercase w-full md:w-auto" variant="outline">
-              Узнать подробнее
             </Button>
           </Link>
         </motion.div>
@@ -87,10 +74,10 @@ export const Hero = () => {
         transition={{ delay: 0.4, duration: 0.7 }}
       >
         <Image
-          className="w-[326px] h-[494px]"
-          width={326 * 3}
-          height={494 * 3}
-          src={"/hero.png"}
+          className="w-[498.79px] h-[571px]"
+          width={498.79 * 5}
+          height={571 * 5}
+          src={"/specialties.png"}
           alt="hero"
         />
       </motion.div>

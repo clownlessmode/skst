@@ -21,7 +21,7 @@ export const SpecialtiesItem = ({
 }: SpecialtiesItemProps) => {
   return (
     <motion.a
-      className={`h-[600px] w-full rounded-[30px] shadow-md overflow-hidden flex flex-col bg-white ${className}`}
+      className={`h-[650px] w-full rounded-[30px] shadow-md overflow-hidden flex flex-col bg-white ${className}`}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -30,14 +30,14 @@ export const SpecialtiesItem = ({
     >
       <motion.div
         transition={{ delay: 0.2, duration: 0.7 }}
-        className="relative h-[265px] w-full overflow-hidden"
+        className="relative min-h-[250px] w-full overflow-hidden"
       >
         <Image
           src={imageSrc}
           alt={title}
           fill
           quality={100}
-          className="object-cover"
+          className="object-cover h-[250px]!"
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </motion.div>
@@ -49,8 +49,8 @@ export const SpecialtiesItem = ({
           transition={{ delay: 0.3, duration: 0.5 }}
           className="flex flex-col gap-4 mb-6"
         >
-          <h3 className="text-2xl font-medium">{title}</h3>
-          <p className="text-[#69697B] text-lg">{description}</p>
+          <h3 className="text-2xl font-medium line-clamp-3">{title}</h3>
+          <p className="text-[#69697B] text-lg line-clamp-5">{description}</p>
         </motion.div>
 
         <motion.div
