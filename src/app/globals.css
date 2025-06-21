@@ -2,7 +2,51 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0b0b2c;
+}
+html.blind-mode {
+  filter: grayscale(100%) contrast(1.2);
+  background-color: black;
+  color: white !important;
+}
+body.blind-mode * {
+  filter: grayscale(100%) contrast(1.2);
+  background-color: black;
+  color: white !important;
+}
+
+/* Можно добавить, чтобы ссылки и кнопки тоже были в нужных цветах */
+body.blind-mode a,
+body.blind-mode button {
+  color: white !important;
+}
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  width: 100%;
+  background: black;
+  color: white;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee-content span {
+  display: inline-block;
+  padding-right: 2rem; /* расстояние между копиями */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @theme inline {
@@ -12,15 +56,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans);
 }
