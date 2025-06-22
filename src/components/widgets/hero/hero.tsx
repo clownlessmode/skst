@@ -67,12 +67,12 @@ export const Hero = () => {
           variants={item}
           className="flex flex-col md:flex-row gap-5 items-center uppercase"
         >
-          <Link href="tel:+73842280332" className="w-full">
+          <Link href="tel:+73842280332" className="w-full md:w-auto">
             <Button className="uppercase w-full md:w-auto">
               Приемная комиссия
             </Button>
           </Link>
-          <Link href="/about" className="w-full">
+          <Link href="/about" className="w-full md:w-auto">
             <Button className="uppercase w-full md:w-auto" variant="outline">
               Узнать подробнее
             </Button>
