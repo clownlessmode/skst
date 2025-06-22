@@ -94,7 +94,7 @@ const Page = () => {
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          <h2 className="font-medium text-xl">Конкурсные задания</h2>
+          <h2 className="font-medium text-4xl">Конкурсные задания</h2>
           <div className="text-lg text-[#69697B] space-y-4">
             <div>
               <p className="font-bold mb-2">Компетенция «Портной»</p>
@@ -131,7 +131,7 @@ const Page = () => {
         </div>
         <div className="flex flex-col gap-3">
           <h2 className="font-medium text-4xl">Победители и призёры</h2>
-          <div className="text-lg text-[#69697B] space-y-4 grid md:grid-cols-2 grid-cols-1 gap-4">
+          <div className="text-lg text-[#69697B] space-y-4 grid grid-cols-2 gap-4">
             <div>
               <p className="font-bold mb-2">Портной</p>
               <ol className="list-decimal list-inside ml-4">

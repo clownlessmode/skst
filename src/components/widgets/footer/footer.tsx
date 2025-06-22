@@ -13,10 +13,13 @@ export const Footer = () => {
     if (path.startsWith("/#")) {
       // Для якорных ссылок проверяем, находимся ли мы на главной странице
       // и совпадает ли хэш
-      return pathname === "/" &&
-        `#${window.location.hash.slice(1)}` === path.slice(1)
-        ? "text-[#235095] font-medium"
-        : "";
+      if (typeof window !== "undefined") {
+        return pathname === "/" &&
+          `#${window.location.hash.slice(1)}` === path.slice(1)
+          ? "text-[#235095] font-medium"
+          : "";
+      }
+      return "";
     }
     return pathname === path ? "text-[#235095] font-medium" : "";
   };
@@ -41,9 +44,13 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-[24px]">
             <FooterHeading title="НАВИГАЦИЯ" />
-            <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex flex-row gap-4">
               <div className="flex flex-col gap-4 ">
-                <FooterText text="Главная" className={getActiveClass("/")} />
+                <FooterText
+                  text="Главная"
+                  href="/"
+                  className={getActiveClass("/")}
+                />
                 <FooterText
                   text="О СКСТ"
                   href="/#about"
@@ -76,7 +83,11 @@ export const Footer = () => {
                   href="/students"
                   className={getActiveClass("/students")}
                 />
-                <FooterText text="УПК" className={getActiveClass("/upk")} />
+                <FooterText
+                  text="УПК"
+                  href="/upk"
+                  className={getActiveClass("/upk")}
+                />
                 <FooterText
                   text="«Центр содействия трудоустройству выпускников (ЦСТВ)»"
                   href="/career-center"
