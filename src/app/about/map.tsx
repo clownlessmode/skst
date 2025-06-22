@@ -37,9 +37,11 @@ export const Map: FC = () => {
           </div>
         </div>
       </div>
-      <Button className="uppercase">
-        <Link href="/specialties">Выбрать специальность</Link>
-      </Button>
+      <Link href="/specialties" className="w-full md:w-auto">
+        <Button className="uppercase w-full md:w-auto">
+          Выбрать специальность
+        </Button>
+      </Link>
     </div>
   );
 };
