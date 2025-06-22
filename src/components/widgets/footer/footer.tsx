@@ -10,11 +10,19 @@ export const Footer = () => {
   const pathname = usePathname();
 
   const getActiveClass = (path: string) => {
+    if (path.startsWith("/#")) {
+      // Для якорных ссылок проверяем, находимся ли мы на главной странице
+      // и совпадает ли хэш
+      return pathname === "/" &&
+        `#${window.location.hash.slice(1)}` === path.slice(1)
+        ? "text-[#235095] font-medium"
+        : "";
+    }
     return pathname === path ? "text-[#235095] font-medium" : "";
   };
 
   return (
-    <div className="flex flex-col gap-8 px-4 md:px-0">
+    <footer className="flex flex-col gap-8 px-4 md:px-0" role="contentinfo">
       <div className="flex flex-col md:flex-row md:justify-between gap-8">
         <div className="flex flex-col md:flex-row md:gap-[64px] gap-8">
           <div className="flex flex-col gap-4">
@@ -38,18 +46,18 @@ export const Footer = () => {
                 <FooterText text="Главная" className={getActiveClass("/")} />
                 <FooterText
                   text="О СКСТ"
-                  href="/about"
-                  className={getActiveClass("/about")}
+                  href="/#about"
+                  className={getActiveClass("/#about")}
                 />
                 <FooterText
                   text="Специальности"
-                  href="/specialties"
-                  className={getActiveClass("/specialties")}
+                  href="/#specialties"
+                  className={getActiveClass("/#specialties")}
                 />
                 <FooterText
                   text="Новости"
-                  href="/news"
-                  className={getActiveClass("/news")}
+                  href="/#news"
+                  className={getActiveClass("/#news")}
                 />
                 <FooterText
                   text="Абитуриентам"
@@ -58,8 +66,8 @@ export const Footer = () => {
                 />
                 <FooterText
                   text="Полезные ссылки"
-                  href="/links"
-                  className={getActiveClass("/links")}
+                  href="/#links"
+                  className={getActiveClass("/#links")}
                 />
               </div>
               <div className="flex flex-col gap-4 ">
@@ -105,6 +113,6 @@ export const Footer = () => {
         Государственное профессиональное образовательное учреждение
         &quot;Сибирский колледж сервиса и технологий&quot;
       </p>
-    </div>
+    </footer>
   );
 };

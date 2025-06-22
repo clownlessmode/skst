@@ -31,22 +31,36 @@ const TextLinks = [
 
 export const Links = () => {
   return (
-    <div className="flex flex-col gap-8 px-4 md:px-0">
-      <h2 className="text-4xl font-medium">Полезные ссылки</h2>
-      <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
+    <section
+      className="flex flex-col gap-8 px-4 md:px-0"
+      aria-labelledby="links-heading"
+    >
+      <h2 id="links-heading" className="text-4xl font-medium">
+        Полезные ссылки
+      </h2>
+      <nav
+        className="grid md:grid-cols-2 grid-cols-1 gap-8"
+        aria-label="Навигация для абитуриентов и студентов"
+      >
         <LinksItems index={1} title="Абитуриентам" />
         <LinksItems index={2} title="Студентам" />
-      </div>
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-8">
+      </nav>
+      <nav
+        className="grid md:grid-cols-3 grid-cols-1 gap-8"
+        aria-label="Навигация для колледжа"
+      >
         <LinksItems index={3} title="Колледж СКСТ" />
         <LinksItems index={4} title="Выпускникам" />
         <LinksItems index={5} title="Преподавателям" />
-      </div>
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-[10px] p-[10px]">
+      </nav>
+      <nav
+        className="grid md:grid-cols-3 grid-cols-1 gap-[10px] p-[10px]"
+        aria-label="Полезные внешние ссылки"
+      >
         {TextLinks.map((link) => (
           <TextLinksItem key={link.title} title={link.title} link={link.link} />
         ))}
-      </div>
-    </div>
+      </nav>
+    </section>
   );
 };

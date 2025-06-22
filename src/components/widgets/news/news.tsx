@@ -1,17 +1,24 @@
 import React from "react";
-
+import Link from "next/link";
 import { NewsItem } from "./news-item";
 import { Button } from "@/components/ui/button";
 
 export const News = () => {
   return (
-    <div className="flex flex-col gap-8 px-4 md:px-0">
-      <div className="w-full justify-between items-center flex">
-        <h2 className="text-4xl font-medium">Последние новости</h2>
-        <Button variant="outline" className="uppercase hidden md:flex">
-          Узнать больше
-        </Button>
-      </div>
+    <section
+      className="flex flex-col gap-8 px-4 md:px-0"
+      aria-labelledby="news-heading"
+    >
+      <header className="w-full justify-between items-center flex">
+        <h2 id="news-heading" className="text-4xl font-medium">
+          Последние новости
+        </h2>
+        <Link href="/news">
+          <Button variant="outline" className="uppercase hidden md:flex">
+            Узнать больше
+          </Button>
+        </Link>
+      </header>
 
       <NewsItem
         id="forum-legkoy-promyshlennosti-2025"
@@ -34,6 +41,6 @@ export const News = () => {
         readTime="3 минуты"
         location="г. Новосибирск, национальный центр «Абилимпикс»"
       />
-    </div>
+    </section>
   );
 };

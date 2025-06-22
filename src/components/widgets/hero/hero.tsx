@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll";
 
 export const Hero = () => {
   // Варианты анимации для контейнера
@@ -42,16 +43,16 @@ export const Hero = () => {
       <div className="flex flex-col gap-8">
         <motion.div variants={item} className="flex flex-col">
           <h1 className="font-bold text-[48px] leading-none md:text-[90px] md:leading-[88.9px]">
-            Образование
+            <span>Образование</span>
+            <motion.span
+              className="block text-[#235095]"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              – путь к успеху!
+            </motion.span>
           </h1>
-          <motion.h1
-            className="font-bold text-[48px] leading-none md:text-[90px] md:leading-[88.9px] text-[#235095] "
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            – путь к успеху!
-          </motion.h1>
         </motion.div>
 
         <motion.p
@@ -72,11 +73,11 @@ export const Hero = () => {
               Приемная комиссия
             </Button>
           </Link>
-          <Link href="/about" className="w-full md:w-auto">
+          <SmoothScrollLink href="/#about" className="w-full md:w-auto">
             <Button className="uppercase w-full md:w-auto" variant="outline">
               Узнать подробнее
             </Button>
-          </Link>
+          </SmoothScrollLink>
         </motion.div>
       </div>
 
@@ -91,7 +92,8 @@ export const Hero = () => {
           width={326 * 3}
           height={494 * 3}
           src={"/hero.png"}
-          alt="hero"
+          alt="Студенты ГПОУ СКСТ - Сибирского колледжа сервиса и технологий в Кемерово"
+          priority
         />
       </motion.div>
     </motion.section>

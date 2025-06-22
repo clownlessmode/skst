@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React from "react";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll";
 
 export const FooterText = ({
   text,
@@ -11,11 +11,11 @@ export const FooterText = ({
   href?: string;
 }) => {
   return (
-    <Link
+    <SmoothScrollLink
       href={href || "/"}
       className={`text-lg text-[#69697B] hover:text-[#235095] ${className}`}
     >
       {text}
-    </Link>
+    </SmoothScrollLink>
   );
 };

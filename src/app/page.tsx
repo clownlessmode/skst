@@ -9,18 +9,26 @@ import { Footer } from "@/components/widgets/footer/footer";
 
 const Page = () => {
   return (
-    <div className="mx-auto max-w-[1440px] w-full flex flex-col gap-[10vh]">
-      <div className="flex flex-col justify-between py-8 min-h-screen">
+    <main className="mx-auto max-w-[1440px] w-full flex flex-col gap-[10vh]">
+      <section className="flex flex-col justify-between py-8 min-h-screen">
         <Header />
         <Hero />
         <Marquee />
+      </section>
+      <div id="about">
+        <About />
       </div>
-      <About />
-      <Specialties />
-      <News />
-      <Links />
+      <div id="specialties">
+        <Specialties />
+      </div>
+      <div id="news">
+        <News />
+      </div>
+      <div id="links">
+        <Links />
+      </div>
       <Footer />
-    </div>
+    </main>
   );
 };
 export default Page;

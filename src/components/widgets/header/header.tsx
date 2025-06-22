@@ -7,27 +7,28 @@ import { BlindMode } from "@/components/features/blind-mode/blind-mode";
 import { motion, AnimatePresence } from "framer-motion";
 import { MoreHorizontal, X } from "lucide-react";
 import { useState } from "react";
+import { SmoothScrollLink } from "@/components/ui/smooth-scroll";
 
 // Ссылки для ПК версии (основные)
 const navLinks = [
-  { label: "Сведения об ОО", to: "/about" },
+  { label: "Сведения об ОО", to: "/info" },
   { label: "Студентам", to: "/students" },
-  { label: "Абитуриентам", to: "/about" },
+  { label: "Абитуриентам", to: "/applicants" },
 ];
 
 // Расширенные ссылки для мобильного меню
 const mobileNavLinks = [
   { label: "Главная", to: "/" },
-  { label: "О СКСТ", to: "/about" },
-  { label: "Специальности", to: "/specialties" },
-  { label: "Новости", to: "/news" },
-  { label: "Абитуриентам", to: "/about" },
-  { label: "Полезные ссылки", to: "/links" },
+  { label: "О СКСТ", to: "/#about" },
+  { label: "Специальности", to: "/#specialties" },
+  { label: "Новости", to: "/#news" },
+  { label: "Абитуриентам", to: "/applicants" },
+  { label: "Полезные ссылки", to: "/#links" },
   { label: "Студентам", to: "/students" },
   { label: "УПК", to: "/upk" },
   { label: "Центр трудоустройства", to: "/career-center" },
   { label: "Преподавателям", to: "/teachers" },
-  { label: "Сведения об ОО", to: "/about" },
+  { label: "Сведения об ОО", to: "/info" },
 ];
 
 // Анимация для контейнера
@@ -208,10 +209,14 @@ export const Header = () => {
                 {/* Ссылки меню */}
                 <div className="flex flex-col p-6 space-y-3 flex-1">
                   {mobileNavLinks.map(({ label, to }) => {
-                    const isActive = pathname === to;
+                    const isActive =
+                      pathname === to ||
+                      (to.startsWith("/#") &&
+                        pathname === "/" &&
+                        window.location.hash === to.substring(1));
                     return (
                       <motion.div key={label} variants={mobileItemVariants}>
-                        <Link
+                        <SmoothScrollLink
                           href={to}
                           onClick={() => setIsMobileMenuOpen(false)}
                           className={`block py-3 px-4 rounded-lg font-medium text-base transition-all ${
@@ -221,7 +226,7 @@ export const Header = () => {
                           }`}
                         >
                           {label}
-                        </Link>
+                        </SmoothScrollLink>
                       </motion.div>
                     );
                   })}

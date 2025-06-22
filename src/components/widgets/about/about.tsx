@@ -22,7 +22,7 @@ export const About = () => {
       >
         <Image
           src="/about.png"
-          alt="about"
+          alt="Здание ГПОУ СКСТ - Сибирского колледжа сервиса и технологий, основан в 1943 году"
           fill
           quality={100}
           className="object-cover object-center "

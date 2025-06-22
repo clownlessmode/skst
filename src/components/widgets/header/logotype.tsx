@@ -5,10 +5,12 @@ export const Logotype = () => {
     <Image
       className="w-[145px] h-[45px]"
       src={"/logotype.png"}
-      alt="logotype"
+      alt="ГПОУ СКСТ - Сибирский колледж сервиса и технологий"
+      title="ГПОУ СКСТ - официальный сайт"
       width={145 * 3}
       height={45 * 3}
       quality={100}
+      priority
     />
   );
 };
