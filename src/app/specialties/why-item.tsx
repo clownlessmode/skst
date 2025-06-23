@@ -19,7 +19,7 @@ export const WhyItem = ({
         height={1000}
         className="w-[120px]"
       />
-      <p className="text-2xl font-medium">{title}</p>
+      <p className="text-2xl font-medium text-center">{title}</p>
       <p className="text-[#69697B] text-lg text-center max-w-[400px]">
         {description}
       </p>

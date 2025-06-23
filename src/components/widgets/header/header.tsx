@@ -11,9 +11,20 @@ import { SmoothScrollLink } from "@/components/ui/smooth-scroll";
 
 // Ссылки для ПК версии (основные)
 const navLinks = [
-  { label: "Сведения об ОО", to: "/info" },
+  { label: "Сведения об ОО", to: "/about" },
   { label: "Студентам", to: "/students" },
   { label: "Абитуриентам", to: "/applicants" },
+];
+
+// Дополнительные ссылки для дропдауна
+const dropdownLinks = [
+  { label: "О СКСТ", to: "/#about" },
+  { label: "Специальности", to: "/#specialties" },
+  { label: "Новости", to: "/#news" },
+  { label: "Полезные ссылки", to: "/#links" },
+  { label: "УПК", to: "/upk" },
+  { label: "Центр трудоустройства", to: "/career-center" },
+  { label: "Преподавателям", to: "/teachers" },
 ];
 
 // Расширенные ссылки для мобильного меню
@@ -100,12 +111,60 @@ const mobileItemVariants = {
   },
 };
 
+// Анимация для дропдауна
+const dropdownVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.95,
+    y: -10,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 400,
+      damping: 30,
+      staggerChildren: 0.05,
+      delayChildren: 0.1,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.95,
+    y: -10,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
+// Анимация для элементов дропдауна
+const dropdownItemVariants = {
+  hidden: { x: -10, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 300,
+      damping: 25,
+    },
+  },
+};
+
 export const Header = () => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -142,6 +201,66 @@ export const Header = () => {
             );
           })}
         </nav>
+
+        {/* Дропдаун меню */}
+        <motion.div
+          variants={itemVariants}
+          className="md:block hidden relative"
+        >
+          <button
+            onClick={toggleDropdown}
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors flex items-center gap-1"
+            aria-label="Показать дополнительные ссылки"
+          >
+            <MoreHorizontal className="size-[20px]" />
+          </button>
+
+          {/* Дропдаун контент */}
+          <AnimatePresence>
+            {isDropdownOpen && (
+              <>
+                {/* Невидимый оверлей для закрытия при клике вне */}
+                <div
+                  className="fixed inset-0 z-10"
+                  onClick={() => setIsDropdownOpen(false)}
+                />
+
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  variants={dropdownVariants}
+                  className="absolute top-full mt-2 right-0 bg-white border border-gray-200 rounded-xl shadow-lg z-20 min-w-[250px] py-2"
+                >
+                  {dropdownLinks.map(({ label, to }) => {
+                    const isActive =
+                      pathname === to ||
+                      (to.startsWith("/#") &&
+                        pathname === "/" &&
+                        typeof window !== "undefined" &&
+                        window.location.hash === to.substring(1));
+
+                    return (
+                      <motion.div key={label} variants={dropdownItemVariants}>
+                        <SmoothScrollLink
+                          href={to}
+                          onClick={() => setIsDropdownOpen(false)}
+                          className={`block py-2.5 px-4 font-medium text-sm transition-all ${
+                            isActive
+                              ? "bg-[#235095] text-white"
+                              : "hover:bg-gray-50 text-gray-700"
+                          }`}
+                        >
+                          {label}
+                        </SmoothScrollLink>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
       <div className="lg:hidden block">
         <button

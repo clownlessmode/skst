@@ -47,7 +47,9 @@ const Why = () => {
     <motion.section className="flex flex-col gap-8 px-4 md:px-0 items-center">
       <motion.div className="flex flex-col gap-6" variants={itemVariants}>
         <div className="w-full justify-between items-center flex flex-col gap-3">
-          <h2 className="text-4xl font-medium">Почему выбирают нас?</h2>
+          <h2 className="text-4xl font-medium text-center md:text-left">
+            Почему выбирают нас?
+          </h2>
           <p className="text-[#69697B] text-lg text-center max-w-[550px]">
             Практические занятия на современном оборудовании и обучение от
             ведущих специалистов отрасли. Гарантируем качественную подготовку и
